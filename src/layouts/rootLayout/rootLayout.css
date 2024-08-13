@@ -21,4 +21,17 @@
         flex: 1;
         overflow: hidden;
     }
+
+    .signInButton {
+        padding: 5px 15px;
+        background-color: #36628F;
+        color: #fff;
+        border-radius: 20px;
+        font-size: 14px;
+
+        &:hover {
+            background-color: #fff;
+            color: #36628F;
+        }
+    }
 }

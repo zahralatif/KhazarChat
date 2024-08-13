@@ -22,15 +22,15 @@ const HomePage = () => {
           <div className="bgContainer">
             <div className="bg"></div>
           </div>
-          <img src="/public/khazar_bot.png" alt="robot" className="bot" />
+          <img src="/khazar_bot.png" alt="robot" className="bot" />
           <div className="chat">
             <img
               src={
                 typingStatus === "Amil"
-                  ? "/public/amil.jpeg"
+                  ? "/amil.jpeg"
                   : typingStatus === "Zahra"
-                  ? "/public/zahra.png"
-                  : "/public/khazar_robot.png"
+                  ? "/zahra.png"
+                  : "/khazar_robot.png"
               }
               alt="robot"
             />

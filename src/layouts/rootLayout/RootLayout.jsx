@@ -3,8 +3,8 @@ import "./rootLayout.css";
 import {
   ClerkProvider,
   SignedIn,
-//   SignedOut,
-//   SignInButton,
+  SignedOut,
+  SignInButton,
   UserButton,
 } from "@clerk/clerk-react";
 
@@ -25,9 +25,9 @@ const RootLayout = () => {
             <div>lang</div>
             {/* user */}
             <div>
-              {/* <SignedOut>
-                <SignInButton />
-              </SignedOut> */}
+              <SignedOut>
+                <SignInButton className="signInButton" />
+              </SignedOut>
               <SignedIn>
                 <UserButton />
               </SignedIn>
