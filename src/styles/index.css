@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    /* --first-color: rgb(252, 146, 39); */
+    /* --title-color: #4c4c54; */
+    --text-color-dark: #9394A5;
+    /* --button-color: #fcc100; */
+    /* --shadow-color: rgba(0, 0, 0, 0.05); */
+
+    --body-color-dark: #111;
+    /* --section-color: #f5eeea; */
+
+    --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* --title-font: 'Alata', sans-serif; */
+
+    --bigger-font-size: 2rem;
+    --big-font-size: 1.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 968px) {
+    :root {
+        --bigger-font-size: 3rem;
+        --big-font-size: 2rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.5rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: .875rem;
+    }
+}
+
+body,
+button,
+input {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    margin: auto;
+    background-color: var(--body-color-dark);
+    color: var(--text-color-dark);
+    transition: .3s;
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--title-color);
+    font-weight: 600;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #36628F;
+}
+
+img {
+    height: auto;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
