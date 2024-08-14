@@ -3,17 +3,10 @@
 }
 
 :root {
-    /* --first-color: rgb(252, 146, 39); */
-    /* --title-color: #4c4c54; */
     --text-color-dark: #9394A5;
-    /* --button-color: #fcc100; */
-    /* --shadow-color: rgba(0, 0, 0, 0.05); */
-
     --body-color-dark: #111;
-    /* --section-color: #f5eeea; */
 
     --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* --title-font: 'Alata', sans-serif; */
 
     --bigger-font-size: 2rem;
     --big-font-size: 1.5rem;
@@ -69,11 +62,6 @@ ul {
 
 a {
     text-decoration: none;
-    color: #36628F;
-
-    &:hover{
-        color: #00306B;
-    }
 }
 
 img {

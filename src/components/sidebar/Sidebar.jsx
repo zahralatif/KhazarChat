@@ -1,14 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <>
       {!isOpen && (
@@ -27,9 +20,7 @@ const Sidebar = () => {
             <div className="logo">
               <Link to="http://khazar.org">
                 <img src="/khazar_logo-dark.png" alt="khazar-logo" />
-                <span translate="no">
-                  Hər gün, hər saat mükəmməlliyə doğru!
-                </span>
+                <span translate="no">Hər gün, hər saat mükəmməlliyə doğru!</span>
               </Link>
             </div>
 

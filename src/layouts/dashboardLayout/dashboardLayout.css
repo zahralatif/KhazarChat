@@ -1,16 +1,30 @@
-.dashboardLayout{
+.dashboardLayout {
     display: flex;
     gap: 50px;
     height: 100%;
+    width: 100%;
+    transition: width 0.3s ease;
+    transition: margin-left 0.3s ease;
 
-    .sidebarMenu{
+    .sidebarMenu {
         position: absolute;
         top: 0;
         left: 0;
         flex: 1;
     }
 
-    .content{
+    .content {
         flex: 3;
     }
+}
+
+.sidebar-open .content {
+    margin-left: 250px;
+    width: 70vw !important;
+
+}
+
+.sidebar-closed .content {
+    margin-left: 0;
+    width: 100vw;
 }

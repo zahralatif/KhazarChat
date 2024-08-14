@@ -1,18 +1,10 @@
 .dashboardPage {
+    width: 100%;
     height: 100%;
     float: right;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: width 0.3s ease;
-
-    &.sidebar-open {
-        width: 70vw;
-    }
-
-    &.sidebar-closed {
-        width: 100vw;
-    }
 
     .mainContent {
         flex: 1;
@@ -75,6 +67,8 @@
                 height: 16px;
                 background: transparent;
                 cursor: pointer;
+                margin-bottom: 8px;
+                margin-right: 5px;
             }
         }
 
@@ -84,7 +78,7 @@
             position: absolute;
             bottom: 15px;
 
-            a{
+            a {
                 color: inherit;
             }
         }
