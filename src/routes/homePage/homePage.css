@@ -20,13 +20,30 @@
 
         h1 {
             font-size: 120px;
-            background: linear-gradient(to right, #315882, #D63E3B);
+            background: linear-gradient(134.45deg, #FF2E2E, #61AFFF);
             background-clip: text;
-            --webkit-background-clip: text;
+            -webkit-background-clip: text;
             color: transparent;
+            font-weight: 600;
+
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+                top: 145px;
+                left: 320px;
+                transform: translate(-50%, -50%);
+                background: rgba(255, 46, 35, 0.8);
+                filter: blur(85px);
+                z-index: -1;
+            }
 
             @media screen and (max-width: 1024px) {
-                font-style: 64px;
+                font-size: 64px;
             }
         }
 
@@ -40,15 +57,16 @@
 
         a {
             padding: 15px 25px;
-            background-color: #36628F;
+            background-color: #3690FF;
             color: #fff;
             border-radius: 20px;
             font-size: 14px;
+            font-weight: 600;
             margin-top: 20px;
 
             &:hover {
                 background-color: #ffffffd8;
-                color: #36628F;
+                color: #3690FF;
             }
         }
     }
@@ -66,10 +84,12 @@
             align-items: center;
             justify-content: center;
             background-color: #140e2d;
+            background: linear-gradient(to bottom, #3216AE, #150948);
             border-radius: 50px;
-            width: 80%;
-            height: 50%;
+            width: 85%;
+            height: 60%;
             position: relative;
+            opacity: 0.9;
 
             .bgContainer {
                 width: 100%;
@@ -92,7 +112,7 @@
         }
 
         .bot {
-
+            width: 45%;
             animation: 3s ease-in-out infinite alternate botAnimate;
         }
 
@@ -106,6 +126,7 @@
             gap: 10px;
             padding: 20px;
             background-color: #2c2937;
+            max-width: 515px;
             border-radius: 10px;
             margin-left: 5px;
 
@@ -139,8 +160,15 @@
         .links {
             display: flex;
             gap: 5px;
-            color: #9394A5;
             font-size: 12px;
+
+            a {
+                color: #3690FF;
+
+                &:hover{
+                    color:#61AFFF;
+                }
+            }
         }
     }
 }

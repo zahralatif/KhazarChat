@@ -1,8 +1,13 @@
+import { Link } from "react-router-dom";
 import "./dashboardPage.css";
 
 const DashboardPage = ({ isSidebarOpen }) => {
   return (
-    <div className={`dashboardPage ${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
+    <div
+      className={`dashboardPage ${
+        isSidebarOpen ? "sidebar-open" : "sidebar-closed"
+      }`}
+    >
       <div className="mainContent">
         <div className="logo">
           <img src="/khu_logo.png" alt="logo" />
@@ -22,6 +27,10 @@ const DashboardPage = ({ isSidebarOpen }) => {
             <img src="/send.png" alt="send-button" />
           </button>
         </form>
+        <span>
+          <Link to="/">KhazarBot</Link> səhv edə bilər. Vacib məlumatların
+          doğruluğunu yoxlayın.
+        </span>
       </div>
     </div>
   );

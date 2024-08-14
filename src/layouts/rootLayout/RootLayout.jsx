@@ -18,8 +18,8 @@ const RootLayout = () => {
         <header>
           <span></span>
           <div className="tools">
-            <div className="mode-toggle">mode</div>
-            <div className="language-selector">lang</div>
+            {/* <div className="mode-toggle">mode</div> */}
+            {/* <div className="language-selector">lang</div> */}
             <div>
               <SignedIn>
                 <UserButton />
