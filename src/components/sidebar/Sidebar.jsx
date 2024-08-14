@@ -35,12 +35,12 @@ const Sidebar = () => {
 
             <div className="chat_logo">
               <img src="/khazar_bot.png" alt="robot" />
-              <Link to="/dashboard">KhazarChat: Create a new Chat</Link>
+              <Link to="/dashboard">KhazarBot: Yeni söhbət başladın</Link>
             </div>
 
             <hr />
 
-            <span className="title">RECENT CHATS</span>
+            <span className="title">SON SÖHBƏTLƏR</span>
             <div className="chat_list">
               <Link to="/">Chat title</Link>
               <Link to="/">Chat title</Link>
