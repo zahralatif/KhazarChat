@@ -3,17 +3,18 @@ import "./dashboardLayout.css";
 import { useAuth } from "@clerk/clerk-react";
 import { useEffect } from "react";
 import { PuffLoader } from "react-spinners";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 const DashboardLayout = () => {
-  const { userID, isLoaded } = useAuth();
+  const { userId, isLoaded } = useAuth();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isLoaded && !userID) {
+    if (isLoaded && !userId) {
       navigate("/sign-in");
     }
-  }, [isLoaded, userID, navigate]);
+  }, [isLoaded, userId, navigate]);
 
   if (!isLoaded) {
     return (
@@ -24,8 +25,10 @@ const DashboardLayout = () => {
   }
 
   return (
-    <div className="dashboardlayout">
-      <div className="sidebar">sidebar</div>
+    <div className="dashboardLayout">
+      <div className="sidebarMenu">
+        <Sidebar />
+      </div>
       <div className="content">
         <Outlet />
       </div>

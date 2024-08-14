@@ -1,12 +1,6 @@
 import { Outlet } from "react-router-dom";
 import "./rootLayout.css";
-import {
-  ClerkProvider,
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react";
+import { ClerkProvider, SignedIn, UserButton } from "@clerk/clerk-react";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -16,18 +10,17 @@ if (!PUBLISHABLE_KEY) {
 
 const RootLayout = () => {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      afterSignOutUrl="/"
+    >
       <div className="rootLayout">
         <header>
           <span></span>
           <div className="tools">
-            <div>mode</div>
-            <div>lang</div>
-            {/* user */}
+            <div className="mode-toggle">mode</div>
+            <div className="language-selector">lang</div>
             <div>
-              <SignedOut>
-                <SignInButton className="signInButton" />
-              </SignedOut>
               <SignedIn>
                 <UserButton />
               </SignedIn>

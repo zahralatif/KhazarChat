@@ -1,0 +1,16 @@
+.dashboardLayout{
+    display: flex;
+    gap: 50px;
+    height: 100%;
+
+    .sidebarMenu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        flex: 1;
+    }
+
+    .content{
+        flex: 4;
+    }
+}

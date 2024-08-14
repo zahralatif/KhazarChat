@@ -70,6 +70,10 @@ ul {
 a {
     text-decoration: none;
     color: #36628F;
+
+    &:hover{
+        color: #00306B;
+    }
 }
 
 img {

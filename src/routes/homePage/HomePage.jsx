@@ -32,7 +32,7 @@ const HomePage = () => {
                   ? "/zahra.png"
                   : "/khazar_robot.png"
               }
-              alt="robot"
+              alt="profile"
             />
             <TypeAnimation
               sequence={[
