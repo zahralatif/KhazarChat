@@ -49,6 +49,12 @@
                     }
                 }
 
+                .answer {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
                 &.user {
                     background-color: #212121;
                     border-radius: 20px;
