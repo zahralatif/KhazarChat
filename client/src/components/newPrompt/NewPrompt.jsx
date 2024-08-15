@@ -18,10 +18,11 @@ const NewPrompt = () => {
         role: "model",
         parts: [{ text: "Hello" }],
       },
-    ],
-    generationConfig: {
-      // maxOutputTokens: 100,
-    },
+    ]
+    // ,
+    // generationConfig: {
+    //   // maxOutputTokens: 100,
+    // },
   });
 
   const endRef = new useRef(null);

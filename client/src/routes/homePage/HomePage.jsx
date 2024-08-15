@@ -10,11 +10,11 @@ const HomePage = () => {
     <div className="homePage">
       <div className="left">
         <h1>Khazar Chat</h1>
-        <h2>
+        <h3>
           Diqqət: Bu söhbət botu Xəzər Universiteti tələbələri tərəfindən
           hazırlanan tədqiqat məhsuludur və hazırda inkişaf etdirilir. Zəhmət
           olmasa, aldığınız vacib məlumatların doğruluğunu yoxlayın.
-        </h2>
+        </h3>
         <Link to="/dashboard">İndi Başla</Link>
       </div>
       <div className="right">

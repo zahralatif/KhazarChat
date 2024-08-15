@@ -13,11 +13,11 @@ const DashboardPage = ({ isSidebarOpen }) => {
           <img src="/khu_logo.png" alt="logo" />
         </div>
         <div className="warning_message">
-          <h2>
+          <h3>
             Diqqət: Bu söhbət botu Xəzər Universiteti tələbələri tərəfindən
             hazırlanan tədqiqat məhsuludur və hazırda inkişaf etdirilir. Zəhmət
             olmasa, aldığınız vacib məlumatların doğruluğunu yoxlayın.
-          </h2>
+          </h3>
         </div>
       </div>
       <div className="formContainer">
