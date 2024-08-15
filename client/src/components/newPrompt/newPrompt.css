@@ -1,3 +1,7 @@
+.endChat {
+    padding-bottom: 10px;
+}
+
 .newPrompt {
     width: 100%;
     height: 100%;
@@ -8,14 +12,18 @@
     margin-top: auto;
     justify-content: space-between;
 
+    .message {
+        align-self: start;
+    }
+
     .newForm {
         position: absolute;
-        bottom: 15px;
+        bottom: 30px;
         border-radius: 20px;
         font-size: 14px;
         background-color: #212121;
         font-weight: 600;
-        width: 40%;
+        width: 650px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -46,7 +54,7 @@
         font-size: 10px;
         text-align: center;
         position: absolute;
-        bottom: 5px;
+        bottom: 15px;
 
         a {
             color: inherit;

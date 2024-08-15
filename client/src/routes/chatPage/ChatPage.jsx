@@ -1,13 +1,7 @@
-import { useRef, useEffect } from "react";
 import "./chatPage.css";
 import NewPrompt from "../../components/newPrompt/NewPrompt.jsx";
 
 const ChatPage = () => {
-  const endRef = new useRef(null);
-
-  useEffect(() => {
-    endRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
 
   return (
     <div className="chatPage">
@@ -22,6 +16,7 @@ const ChatPage = () => {
             <div className="logo">
               <img src="/khazar_robot.png" alt="" />
             </div>
+         
             Test message from KhazarBot Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Animi quam maiores vel facere atque maxime ipsum?
             Cupiditate quos rem deserunt, numquam dignissimos dolorem nisi
@@ -31,29 +26,80 @@ const ChatPage = () => {
             necessitatibus quisquam expedita.
           </div>
           <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
-          <div className="message user">Test message from user</div>
-          <div className="message">Test message from KhazarBot</div>
+          <div className="message">
+ 
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
           <div className="message user">Test message from user</div>
           <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+          
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+        
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
+            Test message from KhazarBot
+          </div>
+          <div className="message user">Test message from user</div>
+          <div className="message">
+            <div className="logo">
+              <img src="/khazar_robot.png" alt="" />
+            </div>
             Test message from KhazarBot last message
           </div>
           <NewPrompt />
-          <div ref={endRef} />
         </div>
       </div>
     </div>
