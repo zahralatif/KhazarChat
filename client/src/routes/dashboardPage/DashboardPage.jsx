@@ -1,7 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./dashboardPage.css";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const DashboardPage = ({ isSidebarOpen }) => {
+  const queryClient = useQueryClient();
+
+  const navigate = useNavigate();
+
+  const mutation = useMutation({
+    mutationFn: (text) => {
+      return fetch(`${import.meta.env.VITE_API_URL}/api/chats`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text }),
+      }).then((res) => res.json());
+    },
+    onSuccess: (id) => {
+      queryClient.invalidateQueries({ queryKey: ["userChats"] });
+      navigate(`/dashboard/chats/${id}`);
+    },
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const text = e.target.text.value;
+    if (!text) return;
+  
+    mutation.mutate(text);
+  };
+  
+
   return (
     <div
       className={`dashboardPage ${
@@ -21,8 +52,12 @@ const DashboardPage = ({ isSidebarOpen }) => {
         </div>
       </div>
       <div className="formContainer">
-        <form>
-          <input type="text" placeholder="Buyurun, sualınızı verin!" />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="text"
+            placeholder="Buyurun, sualınızı verin!"
+          />
           <button>
             <img src="/send.png" alt="send-button" />
           </button>

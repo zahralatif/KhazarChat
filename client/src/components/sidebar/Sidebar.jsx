@@ -1,7 +1,32 @@
 import { Link } from "react-router-dom";
 import "./sidebar.css";
+import { useQuery } from "@tanstack/react-query";
+import { BeatLoader } from "react-spinners";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+  const { isFetching, isError, error, data } = useQuery({
+    queryKey: ["userChats"],
+    queryFn: async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/userChats`,
+          {
+            credentials: "include",
+          }
+        );
+        if (!response.ok) {
+          throw new Error(
+            `Network response was not ok: ${response.statusText}`
+          );
+        }
+        return response.json();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+      }
+    },
+  });
+
   return (
     <>
       {!isOpen && (
@@ -20,7 +45,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <div className="logo">
               <Link to="http://khazar.org">
                 <img src="/khazar_logo-dark.png" alt="khazar-logo" />
-                <span translate="no">Hər gün, hər saat mükəmməlliyə doğru!</span>
+                <span translate="no">
+                  Hər gün, hər saat mükəmməlliyə doğru!
+                </span>
               </Link>
             </div>
 
@@ -33,12 +60,19 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             <span className="title">SON SÖHBƏTLƏR</span>
             <div className="chat_list">
-              <Link to="/">Chat title</Link>
-              <Link to="/">Chat title</Link>
-              <Link to="/">Chat title</Link>
-              <Link to="/">Chat title</Link>
-              <Link to="/">Chat title</Link>
-              <Link to="/">Chat title</Link>
+              {isFetching ? (
+                <BeatLoader color="#9394A5" className="center" />
+              ) : isError ? (
+                <div className="center">
+                  Something went wrong! <br /> {error.message}
+                </div>
+              ) : (
+                data?.map((chat) => (
+                  <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
+                    {chat.title || "Yeni söhbət"}
+                  </Link>
+                ))
+              )}
             </div>
 
             <hr />

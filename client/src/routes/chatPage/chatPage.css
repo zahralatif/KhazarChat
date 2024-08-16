@@ -49,7 +49,7 @@
                     }
                 }
 
-                .answer {
+                &.answer {
                     display: flex;
                     flex-direction: column;
                     gap: 15px;
@@ -60,6 +60,8 @@
                     border-radius: 20px;
                     max-width: 80%;
                     align-self: flex-end;
+
+                    .logo{display: none;}
                 }
             }
         }
