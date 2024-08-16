@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BeatLoader } from "react-spinners";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const { isFetching, isError, error, data } = useQuery({
+  const { isFetching, isError, data } = useQuery({
     queryKey: ["userChats"],
     queryFn: async () => {
       try {
@@ -64,7 +64,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <BeatLoader color="#9394A5" className="center" />
               ) : isError ? (
                 <div className="center">
-                  Something went wrong! <br /> {error.message}
+                  You do not have any chats yet. <br /> Please ask your
+                  question, and you will be redirected to your new chat page.
                 </div>
               ) : (
                 data?.map((chat) => (

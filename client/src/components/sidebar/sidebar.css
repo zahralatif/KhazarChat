@@ -101,6 +101,7 @@
         flex-direction: column;
         overflow-y: scroll;
         height: 25vh;
+        width: 20vw;
 
         -ms-overflow-style: none;
         scrollbar-width: none;
