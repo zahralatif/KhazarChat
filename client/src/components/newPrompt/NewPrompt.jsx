@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "./newPrompt.css";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import model from "../../lib/gemini";
 import Markdown from "react-markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -54,7 +54,7 @@ const NewPrompt = ({ data }) => {
     },
   });
 
-  const add = async (text, isInitial) => {
+  const add = useCallback(async (text, isInitial) => {
     if (!isInitial) setQuestion(text);
 
     try {
@@ -71,7 +71,7 @@ const NewPrompt = ({ data }) => {
     } catch (err) {
       console.log(err);
     }
-  };
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
