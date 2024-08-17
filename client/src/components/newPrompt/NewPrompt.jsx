@@ -5,31 +5,27 @@ import model from "../../lib/gemini";
 import Markdown from "react-markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const NewPrompt = (data) => {
+const NewPrompt = ({ data }) => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const chat = model.startChat({
-    history: data?.history
-      ? [
-          data.history.map(({ role, parts }) => ({
-            role,
-            parts: [{ text: parts[0].text }],
-          })),
-        ]
-      : [],
+    history: data?.history?.map(({ role, parts }) => ({
+      role,
+      parts: [{ text: parts[0].text }],
+    })) || [],
   });
 
-  const endRef = new useRef(null);
-  const formRef = new useRef(null);
+  const endRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     endRef.current.scrollIntoView({ behavior: "smooth" });
-  }, [data, question, answer]);
+  }, [question, answer]);
 
   const queryClient = useQueryClient();
   const path = useLocation().pathname;
-
   const chatId = path.split("/").pop();
 
   const mutation = useMutation({
@@ -77,8 +73,6 @@ const NewPrompt = (data) => {
     }
   };
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text = e.target.text.value;
@@ -87,7 +81,7 @@ const NewPrompt = (data) => {
     setIsLoading(true);
 
     try {
-      add(text, false);
+      await add(text, false);
     } catch (error) {
       console.error("Error during message send:", error);
     } finally {
@@ -95,18 +89,14 @@ const NewPrompt = (data) => {
     }
   };
 
-  //! IN PRODUCTION NO NEED
-  const hasRun = useRef(false)
+  const hasRun = useRef(false);
 
   useEffect(() => {
-    if (!hasRun.current) {
-      if (data?.history?.length === 1) {
-        add(data.history[0].parts[0].text, true);
-      }
+    if (!hasRun.current && data?.history?.length === 1) {
+      add(data.history[0].parts[0].text, true);
     }
-       hasRun.current = true;
-  },[])
-  
+    hasRun.current = true;
+  }, [add, data]);
 
   return (
     <div className="newPrompt">
@@ -125,6 +115,7 @@ const NewPrompt = (data) => {
           type="text"
           name="text"
           placeholder="Buyurun, sualınızı verin!"
+          disabled={isLoading}
         />
         <button disabled={isLoading}>
           <img src="/send.png" alt="send-button" />
