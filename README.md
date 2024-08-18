@@ -27,8 +27,8 @@ KhazarChat/
 │   │   |   ├── rootLayout/                   # Root Layout
 │   │   |   |   ├── rootLayout.css         
 │   │   |   |   └── RootLayout.jsx         
-│   │   ├── lib/  
-│   │   |   └── gemini.js/                    # Library files or custom utilities
+│   │   ├── lib/                              # Library files or custom utilities
+│   │   |   └── gemini.js/ 
 │   │   ├── routes/                           # Pages corresponding to different routes
 │   │   |   ├── chatPage/                     # Chat Page
 │   │   |   |   ├── chatPage.css         
