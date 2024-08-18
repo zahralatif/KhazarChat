@@ -14,6 +14,9 @@ KhazarChat/
 │   │   └── ...
 │   ├── src/
 │   │   ├── components/                       # Reusable components
+│   │   |   ├── feedback/                     # Feedback Component
+│   │   |   |   ├── feedback.css         
+│   │   |   |   └── Feedback.jsx
 │   │   |   ├── newPropmt/                    # New Prompt Component
 │   │   |   |   ├── newPropmt.css         
 │   │   |   |   └── NewPropmt.jsx

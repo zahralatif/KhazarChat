@@ -27,6 +27,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     },
   });
 
+  const sortedChats = data
+    ? [...data].sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      )
+    : [];
+
   return (
     <>
       {!isOpen && (
@@ -68,7 +74,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   question, and you will be redirected to your new chat page.
                 </div>
               ) : (
-                data?.map((chat) => (
+                sortedChats.map((chat) => (
                   <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
                     {chat.title || "Yeni söhbət"}
                   </Link>
