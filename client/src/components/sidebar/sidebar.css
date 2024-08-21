@@ -101,7 +101,9 @@
         flex-direction: column;
         overflow-y: scroll;
         height: 25vh;
+        gap: 5px;
         width: 20vw;
+        color: #AFAFAF;
 
         -ms-overflow-style: none;
         scrollbar-width: none;
@@ -110,16 +112,27 @@
             display: none;
         }
 
-        a {
+        .chat-item {
             width: 305px;
             padding: 10px;
             border-radius: 10px;
             color: #AFAFAF;
+            padding: 10px;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
 
             &:hover {
                 background-color: #212121;
             }
+
+            &.active {
+                background-color: #212121;
+                font-weight: bold;
+            }
         }
+
+
     }
 
     .buttons {

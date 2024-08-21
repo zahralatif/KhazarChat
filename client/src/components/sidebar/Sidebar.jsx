@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 import { useQuery } from "@tanstack/react-query";
+import { useLocation } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
@@ -28,10 +29,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   });
 
   const sortedChats = data
-    ? [...data].sort(
-        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-      )
+    ? [...data].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
     : [];
+
+  const location = useLocation();
+  const currentChatId = location.pathname.split("/").pop();
 
   return (
     <>
@@ -75,7 +77,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 </div>
               ) : (
                 sortedChats.map((chat) => (
-                  <Link to={`/dashboard/chats/${chat._id}`} key={chat._id}>
+                  <Link
+                    to={`/dashboard/chats/${chat._id}`}
+                    key={chat._id}
+                    className={`chat-item ${
+                      chat._id === currentChatId ? "active" : ""
+                    }`}
+                  >
                     {chat.title || "Yeni söhbət"}
                   </Link>
                 ))
