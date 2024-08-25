@@ -4,7 +4,13 @@ import "./sidebar.css";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
-import { FiEdit3, FiMoreHorizontal, FiTrash2 } from "react-icons/fi";
+import {
+  FiChevronsLeft,
+  FiEdit3,
+  FiMenu,
+  FiMoreHorizontal,
+  FiTrash2,
+} from "react-icons/fi";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const { isFetching, isError, data } = useQuery({
@@ -58,13 +64,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     <>
       {!isOpen && (
         <div className="burger-menu" onClick={toggleSidebar}>
-          <img src="/burger.png" alt="open-menu" />
+          <FiMenu className="toggle-icon" />
         </div>
       )}
 
       <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
         <div className="sidebar-toggle" onClick={toggleSidebar}>
-          <img src={isOpen ? "/close.png" : "/burger.png"} alt="toggle-icon" />
+          {isOpen ? (
+            <FiChevronsLeft className="toggle-icon" />
+          ) : (
+            <FiMenu className="toggle-icon" />
+          )}
         </div>
 
         {isOpen && (
