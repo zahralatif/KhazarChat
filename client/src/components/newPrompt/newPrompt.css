@@ -40,12 +40,14 @@
         }
 
         button {
-            width: 16px;
-            height: 16px;
             background: transparent;
-            cursor: pointer;
-            margin-bottom: 8px;
-            margin-right: 5px;
+            color: #AFAFAF;
+            margin-bottom: -5px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
         }
     }
 

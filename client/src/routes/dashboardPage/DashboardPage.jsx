@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./dashboardPage.css";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { FiSend } from "react-icons/fi";
 
 const DashboardPage = ({ isSidebarOpen }) => {
   const queryClient = useQueryClient();
@@ -28,10 +29,9 @@ const DashboardPage = ({ isSidebarOpen }) => {
     e.preventDefault();
     const text = e.target.text.value;
     if (!text) return;
-  
+
     mutation.mutate(text);
   };
-  
 
   return (
     <div
@@ -59,7 +59,7 @@ const DashboardPage = ({ isSidebarOpen }) => {
             placeholder="Buyurun, sualınızı verin!"
           />
           <button>
-            <img src="/send.png" alt="send-button" />
+            <FiSend />
           </button>
         </form>
         <span>

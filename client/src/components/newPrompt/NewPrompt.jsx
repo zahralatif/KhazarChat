@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import model from "../../lib/gemini";
 import Markdown from "react-markdown";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { FiSend } from "react-icons/fi";
 
 const NewPrompt = ({ data }) => {
   const [question, setQuestion] = useState("");
@@ -11,10 +12,11 @@ const NewPrompt = ({ data }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const chat = model.startChat({
-    history: data?.history?.map(({ role, parts }) => ({
-      role,
-      parts: [{ text: parts[0].text }],
-    })) || [],
+    history:
+      data?.history?.map(({ role, parts }) => ({
+        role,
+        parts: [{ text: parts[0].text }],
+      })) || [],
   });
 
   const endRef = useRef(null);
@@ -118,7 +120,7 @@ const NewPrompt = ({ data }) => {
           disabled={isLoading}
         />
         <button disabled={isLoading}>
-          <img src="/send.png" alt="send-button" />
+          <FiSend />
         </button>
       </form>
       <span>
