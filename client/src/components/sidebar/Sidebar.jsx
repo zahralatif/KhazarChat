@@ -1,32 +1,51 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./sidebar.css";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
+import { FiEdit3, FiMoreHorizontal, FiTrash2 } from "react-icons/fi";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const { isFetching, isError, data } = useQuery({
     queryKey: ["userChats"],
     queryFn: async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/userChats`,
-          {
-            credentials: "include",
-          }
-        );
-        if (!response.ok) {
-          throw new Error(
-            `Network response was not ok: ${response.statusText}`
-          );
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/userChats`,
+        {
+          credentials: "include",
         }
-        return response.json();
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        throw error;
+      );
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.statusText}`);
       }
+      return response.json();
     },
   });
+
+  const [dropdownOpen, setDropdownOpen] = useState(null);
+  const dropdownRef = useRef(null);
+
+  const handleDotsClick = (chatId) => {
+    setDropdownOpen(dropdownOpen === chatId ? null : chatId);
+  };
+
+  const handleDropdownItemClick = () => {
+    setDropdownOpen(null);
+  };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setDropdownOpen(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const sortedChats = data
     ? [...data].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -72,8 +91,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <BeatLoader color="#9394A5" className="center" />
               ) : isError ? (
                 <div className="center">
-                  You do not have any chats yet. <br /> Please ask your
-                  question, and you will be redirected to your new chat page.
+                  Sizin hal-hazırda heç bir söhbətiniz yoxdur. <br /> Zəhmət
+                  olmasa, sualınızı verin və yeni söhbət səhifənizə
+                  yönləndiriləcəksiniz.
                 </div>
               ) : (
                 sortedChats.map((chat) => (
@@ -84,7 +104,41 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                       chat._id === currentChatId ? "active" : ""
                     }`}
                   >
-                    {chat.title || "Yeni söhbət"}
+                    <div className="chat_title">
+                      <div>{chat.title || "Yeni söhbət"}</div>
+                      <div
+                        className="dots"
+                        onClick={() => handleDotsClick(chat._id)}
+                      >
+                        <FiMoreHorizontal />
+
+                        {dropdownOpen === chat._id && (
+                          <div className="dropdown_menu" ref={dropdownRef}>
+                            <div
+                              className="dropdown_item"
+                              onClick={handleDropdownItemClick}
+                            >
+                              <FiEdit3 className="icon" />
+                              Adını dəyiş
+                            </div>
+                            {/* <div
+                              className="dropdown_item"
+                              onClick={handleDropdownItemClick}
+                            >
+                              <FiShare className="icon" />
+                              Paylaş
+                            </div> */}
+                            <div
+                              className="dropdown_item delete"
+                              onClick={handleDropdownItemClick}
+                            >
+                              <FiTrash2 className="icon" />
+                              Sil
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </Link>
                 ))
               )}
