@@ -1,30 +1,13 @@
-import { Router, Request, Response, NextFunction } from "express";
-import { errorHandler } from "../helpers/errorHandler";
-import { UserChats } from "../schema/userChats.schema";
+import { Router } from "express";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
+import { deleteChat, renameChat, user } from "../controllers/userChats.controller";
 
 const router = Router();
 
-router.get("/", ClerkExpressRequireAuth(), async (req: Request, res: Response, next: NextFunction) => {
-    const userId = req.auth?.userId;
+router.get("/", ClerkExpressRequireAuth(), user);
 
-    if (!userId) {
-        return errorHandler(res, 400, "User ID is missing or invalid.");
-    }
+router.put('/:id', renameChat);
 
-    try {
-        const userChats = await UserChats.findOne({ userId });
-
-        if (!userChats) {
-            return errorHandler(res, 404, "User chats not found.");
-        }
-
-        res.status(200).json(userChats.chats);
-
-    } catch (error) {
-        console.error("Error fetching user chats:", error);
-        errorHandler(res, 500, "Error fetching userChats!");
-    }
-});
+router.delete('/:id', deleteChat);
 
 export default router;
